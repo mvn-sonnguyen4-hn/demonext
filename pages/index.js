@@ -23,6 +23,7 @@ export default function Home({ posts }) {
         <p className="title">This is title</p>
         <Articles posts={posts} />
         <Image src={ImageDefault} width={100} height={100} />
+        <img src="https://kenh14cdn.com/thumb_w/660/2020/7/17/brvn-15950048783381206275371.jpg" />
       </main>
       <style jsx>
         {`
@@ -39,13 +40,11 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  const data = await axios.get(
-    "https://nextjs112.herokuapp.com/api/post"
-  );
+  const data = await axios.get("https://nextjs112.herokuapp.com/api/post");
   return {
     props: {
       posts: data.data.posts,
     },
-    revalidate:60
+    revalidate: 60,
   };
 }
